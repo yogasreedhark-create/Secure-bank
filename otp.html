@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification - SecureBank</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="gradient">
+    <div class="card otp-card">
+        <h1 class="title">Verify OTP</h1>
+        <p>Enter the OTP sent to your account to continue.</p>
+        <p>Your OTP: <b id="show-otp"></b></p>
+        <input id="otp-input" class="input" type="text" placeholder="Enter OTP">
+        <button class="btn" onclick="verifyOtp()">Verify</button>
+        <a href="index.html" class="back">⬅ Back to Login</a>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
