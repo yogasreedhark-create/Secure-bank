@@ -1,0 +1,324 @@
+/* ==============================
+   GENERAL RESET & BODY
+============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body.gradient,
+body.dashboard-body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    display: flex;
+}
+
+/* ==============================
+   SIDEBAR (NEW MODERN BUTTON STYLE)
+============================== */
+.sidebar {
+    width: 250px;
+    background: rgba(0, 0, 0, 0.88);
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: fixed;
+}
+
+.sidebar .brand {
+    font-size: 1.9rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Sidebar Buttons */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar-nav button {
+    width: 100%;
+    text-align: left;
+    background: rgba(255,255,255,0.12);
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar-nav button:hover {
+    background: #2575fc;
+    transform: translateX(5px);
+}
+
+/* Dark Mode Button */
+.sidebar-nav .dark-mode-btn {
+    margin-top: 10px;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    margin-top: auto;
+    font-size: 0.85rem;
+    color: #ccc;
+    line-height: 1.4;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ==============================
+   MAIN CONTENT
+============================== */
+.main-content,
+.content {
+    margin-left: 260px;
+    padding: 40px;
+    width: calc(100% - 260px);
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.sub-text {
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+/* ==============================
+   CARD
+============================== */
+.card {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.card.wide {
+    max-width: 720px;
+}
+
+.card h1 {
+    margin-bottom: 20px;
+    font-size: 1.9rem;
+}
+
+.card p {
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+/* ==============================
+   INPUT & BUTTON
+============================== */
+.input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.input:focus {
+    outline: 2px solid #2575fc;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #2575fc;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #6a11cb;
+}
+
+/* ==============================
+   LINKS
+============================== */
+a.back {
+    display: inline-block;
+    margin-top: 15px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a.back:hover {
+    color: #2575fc;
+}
+
+/* ==============================
+   BALANCE CARD (Dashboard)
+============================== */
+.balance-card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.balance-card .balance-label {
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.balance-card .balance-amount {
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+/* ==============================
+   ACTION GRID (Dashboard)
+============================== */
+.action-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.action-card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.action-card:hover {
+    background: rgba(37,117,252,0.85);
+}
+
+/* ==============================
+   TRANSACTION LIST
+============================== */
+.txn-list {
+    list-style: none;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.txn-list li {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+/* ==============================
+   FAQ CHATBOX
+============================== */
+.chat-box {
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.user-msg,
+.bot-msg {
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    max-width: 80%;
+    width: fit-content;
+}
+
+.user-msg {
+    background: #2575fc;
+    align-self: flex-end;
+}
+
+.bot-msg {
+    background: #6a11cb;
+}
+
+/* ==============================
+   DARK MODE
+============================== */
+body.dark-mode {
+    background: linear-gradient(135deg, #111, #333);
+    color: #fff;
+}
+
+body.dark-mode .sidebar {
+    background: #080808;
+}
+
+body.dark-mode .card {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .btn {
+    background: #6a11cb;
+}
+
+body.dark-mode .btn:hover {
+    background: #2575fc;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media screen and (max-width: 768px) {
+
+    .sidebar {
+        width: 70px;
+        padding: 15px;
+    }
+
+    .sidebar .brand {
+        font-size: 1rem;
+    }
+
+    .sidebar-nav button {
+        font-size: 0;
+        padding: 12px;
+    }
+
+    .sidebar-nav button::after {
+        content: "•";
+        font-size: 1.4rem;
+        color: #fff;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-content,
+    .content {
+        margin-left: 70px;
+        padding: 20px;
+        width: calc(100% - 70px);
+    }
+}
