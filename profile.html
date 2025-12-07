@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile / KYC - SecureBank</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="gradient">
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>SecureBank</h2>
+    <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="deposit.html">Deposit</a></li>
+        <li><a href="withdraw.html">Withdraw</a></li>
+        <li><a href="transfer.html">Transfer</a></li>
+        <li><a href="transactions.html">Transactions</a></li>
+        <li><a href="profile.html" class="active">Profile / KYC</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a onclick="toggleDarkMode()">🌙 Dark Mode</a></li>
+        <li><a onclick="logout()">Logout</a></li>
+    </ul>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <h1>KYC Verification</h1>
+
+    <div class="profile-card">
+
+        <h2>User Details</h2>
+        <p><strong>Username:</strong> <span id="username"></span></p>
+
+        <h2>KYC Status: 
+            <span id="kyc-status" class="status-badge">Not Submitted</span>
+        </h2>
+
+        <h3>Upload KYC Documents</h3>
+
+        <label>Aadhar Front:</label>
+        <input type="file" id="aadhar-front">
+
+        <label>Aadhar Back:</label>
+        <input type="file" id="aadhar-back">
+
+        <label>Selfie Verification:</label>
+        <input type="file" id="selfie-photo">
+
+        <button onclick="submitKYC()">Submit KYC</button>
+
+        <hr>
+
+        <h3>KYC Progress</h3>
+        <ul id="kyc-progress">
+            <li id="step1">📄 Information Submitted</li>
+            <li id="step2">🔍 Verification Under Review</li>
+            <li id="step3">✅ KYC Verified</li>
+        </ul>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+// PAGE LOAD
+document.addEventListener("DOMContentLoaded", () => {
+    let users = JSON.parse(localStorage.getItem("bankUsers")) || {};
+    let current = localStorage.getItem("currentUser");
+
+    if (!current) {
+        window.location.href = "index.html";
+        return;
+    }
+
+    document.getElementById("username").innerText = current;
+
+    let status = users[current].kycStatus || "Not Submitted";
+    updateKYCStatus(status);
+});
+
+// UPDATE STATUS BADGE + PROGRESS UI
+function updateKYCStatus(status) {
+    let badge = document.getElementById("kyc-status");
+    let p1 = document.getElementById("step1");
+    let p2 = document.getElementById("step2");
+    let p3 = document.getElementById("step3");
+
+    // RESET UI
+    p1.style.opacity = 0.3;
+    p2.style.opacity = 0.3;
+    p3.style.opacity = 0.3;
+
+    if (status === "Not Submitted") {
+        badge.innerText = "Not Submitted";
+        badge.style.background = "#777";
+    }
+    if (status === "Pending") {
+        badge.innerText = "Pending Review";
+        badge.style.background = "orange";
+
+        p1.style.opacity = 1;
+        p2.style.opacity = 1;
+    }
+    if (status === "Verified") {
+        badge.innerText = "Verified";
+        badge.style.background = "green";
+
+        p1.style.opacity = 1;
+        p2.style.opacity = 1;
+        p3.style.opacity = 1;
+    }
+}
+
+// SUBMIT KYC
+function submitKYC() {
+    let users = JSON.parse(localStorage.getItem("bankUsers")) || {};
+    let current = localStorage.getItem("currentUser");
+
+    if (!current) return;
+
+    let front = document.getElementById("aadhar-front").files.length;
+    let back = document.getElementById("aadhar-back").files.length;
+    let selfie = document.getElementById("selfie-photo").files.length;
+
+    if (!front || !back || !selfie) {
+        alert("Upload all documents!");
+        return;
+    }
+
+    users[current].kycStatus = "Pending";
+    localStorage.setItem("bankUsers", JSON.stringify(users));
+
+    updateKYCStatus("Pending");
+    alert("KYC Submitted! Verification in progress...");
+
+    // AUTO VERIFY (SIMULATION)
+    setTimeout(() => {
+        users[current].kycStatus = "Verified";
+        localStorage.setItem("bankUsers", JSON.stringify(users));
+        updateKYCStatus("Verified");
+        alert("KYC Verified Successfully! ✔");
+    }, 5000);
+}
+</script>
+
+<style>
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+}
+
+#kyc-progress li {
+    margin: 8px 0;
+    font-size: 18px;
+    transition: 0.3s;
+}
+</style>
+
+</body>
+</html>
