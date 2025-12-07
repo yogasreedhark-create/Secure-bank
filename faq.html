@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ & Chatbot - SecureBank</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="gradient">
+    <!-- Sidebar Dashboard -->
+    <aside class="sidebar">
+        <h2 class="brand">SecureBank</h2>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="transactions.html">Transactions</a>
+            <a href="deposit.html">Deposit</a>
+            <a href="withdraw.html">Withdraw</a>
+            <a href="transfer.html">Transfer</a>
+            <a href="faq.html" class="active">FAQ</a>
+            <a onclick="logout()">Logout</a>
+        </nav>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="card wide">
+            <h1>FAQ Chatbot</h1>
+            <p>Type your question below and get instant answers!</p>
+            <div id="chat-box" class="chat-box"></div>
+            <input id="chat-input" class="input" placeholder="Ask a question…">
+            <button class="btn" onclick="askBot()">Ask</button>
+            <a href="dashboard.html" class="back">⬅ Back to Dashboard</a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
